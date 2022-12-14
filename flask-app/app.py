@@ -56,11 +56,11 @@ def get_employee(userID):
     the_response.mimetype = 'application/json'
     return the_response
 
-#returns sales with total value over 1000
+#returns sales with total value over 50000
 @app.route('/bigSales', methods=['GET'])
 def bigSales():
    cur = db.get_db().cursor()
-   cur.execute('select stockID from item where quantity * price > 1000')
+   cur.execute('select stockID from item where quantity * price > 50000')
    row_headers = [x[0] for x in cur.description]
    json_data = []
    theData = cur.fetchall()

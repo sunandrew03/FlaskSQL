@@ -10,8 +10,8 @@ CREATE TABLE employee (
     firstName VARCHAR(20) NOT NULL,
     lastName VARCHAR(30) NOT NULL,
     email VARCHAR(40) NOT NULL,
-    phone INTEGER NOT NULL,
-    fax INTEGER,
+    phone VARCHAR(40) NOT NULL,
+    fax VARCHAR(40),
     PRIMARY KEY (employeeID)
 );
 
@@ -20,13 +20,13 @@ CREATE TABLE customer (
     firstName VARCHAR(20) NOT NULL,
     lastName VARCHAR(30) NOT NULL,
     email VARCHAR(40) NOT NULL,
-    phone INTEGER NOT NULL,
-    fax INTEGER,
+    phone VARCHAR(40) NOT NULL,
+    fax VARCHAR(40),
     address VARCHAR(30) NOT NULL,
     city VARCHAR(20) NOT NULL,
-    state VARCHAR(20) NOT NULL,
-    country VARCHAR(20) NOT NULL,
-    postalCode INTEGER NOT NULL,
+    state VARCHAR(20),
+    country VARCHAR(30) NOT NULL,
+    postalCode VARCHAR(20),
     assignedRep INT,
     PRIMARY KEY (customerID),
     FOREIGN KEY (customerID) REFERENCES employee (employeeID)
@@ -41,7 +41,7 @@ CREATE TABLE sale (
 
 CREATE TABLE item (
     itemID INT AUTO_INCREMENT NOT NULL,
-    price INT NOT NULL,
+    price varchar(40) NOT NULL,
     quantity INT NOT NULL,
     stockID INT NOT NULL,
     PRIMARY KEY (itemID),
@@ -53,8 +53,8 @@ CREATE TABLE item (
 
 CREATE TABLE stock (
     stockID INT AUTO_INCREMENT NOT NULL,
-    ticker VARCHAR(10) NOT NULL,
-    name VARCHAR(30) NOT NULL,
+    ticker VARCHAR(20) NOT NULL,
+    name VARCHAR(60) NOT NULL,
     sectorID INT NOT NULL,
     exchangeID INT NOT NULL,
     PRIMARY KEY (stockID),
@@ -66,7 +66,7 @@ CREATE TABLE stock (
 
 CREATE TABLE sector (
     sectorID INT AUTO_INCREMENT NOT NULL,
-    name VARCHAR(20) NOT NULL,
+    name VARCHAR(30) NOT NULL,
     PRIMARY KEY (sectorID)
 );
 
@@ -169,106 +169,56 @@ insert into customer (customerID, firstName, lastName, email, phone, fax, addres
 insert into customer (customerID, firstName, lastName, email, phone, fax, address, city, state, country, postalCode, assignedRep) values (70, 'Shellie', 'Zoren', 'szoren1x@webs.com', '871-542-1097', '9175041480', '11 Stoughton Court', 'Songshan', null, 'China', null, 8);
 
 
-insert into sale (saleID, time) values (1, '2022-04-09 07:05:49', 2);
-insert into sale (saleID, time) values (2, '2022-09-26 14:44:48', 2);
-insert into sale (saleID, time) values (3, '2022-07-17 21:57:52', 3);
-insert into sale (saleID, time) values (4, '2022-07-30 21:46:50', 2);
-insert into sale (saleID, time) values (5, '2022-01-28 09:29:51', 2);
-insert into sale (saleID, time) values (6, '2022-04-04 03:27:57', 8);
-insert into sale (saleID, time) values (7, '2022-01-28 03:47:50', 2);
-insert into sale (saleID, time) values (8, '2021-12-04 20:59:55', 2);
-insert into sale (saleID, time) values (9, '2022-05-08 01:46:28', 5);
-insert into sale (saleID, time) values (10, '2022-01-20 16:27:27', 2);
-insert into sale (saleID, time) values (11, '2022-08-13 04:09:49', 7);
-insert into sale (saleID, time) values (12, '2022-10-20 01:24:37', 2);
-insert into sale (saleID, time) values (13, '2021-12-21 02:02:44', 2);
-insert into sale (saleID, time) values (14, '2022-07-11 04:29:33', 7);
-insert into sale (saleID, time) values (15, '2022-06-06 13:19:34', 2);
-insert into sale (saleID, time) values (16, '2022-09-02 17:56:12', 2);
-insert into sale (saleID, time) values (17, '2021-12-30 06:53:11', 3);
-insert into sale (saleID, time) values (18, '2022-03-17 00:32:11', 10);
-insert into sale (saleID, time) values (19, '2022-04-29 06:24:39', 2);
-insert into sale (saleID, time) values (20, '2022-11-06 21:57:03', 2);
-insert into sale (saleID, time) values (21, '2022-10-05 01:15:10', 2);
-insert into sale (saleID, time) values (22, '2021-12-09 14:04:45', 2);
-insert into sale (saleID, time) values (23, '2022-05-29 09:12:57', 2);
-insert into sale (saleID, time) values (24, '2022-05-06 15:26:08', 2);
-insert into sale (saleID, time) values (25, '2021-11-26 19:04:18', 2);
-insert into sale (saleID, time) values (26, '2022-10-29 16:47:07', 4);
-insert into sale (saleID, time) values (27, '2022-10-05 18:00:23', 2);
-insert into sale (saleID, time) values (28, '2022-08-12 21:49:54', 5);
-insert into sale (saleID, time) values (29, '2022-02-04 14:27:12', 6);
-insert into sale (saleID, time) values (30, '2022-10-09 22:53:28', 2);
-insert into sale (saleID, time) values (31, '2022-06-22 23:21:25', 7);
-insert into sale (saleID, time) values (32, '2022-08-02 16:27:05', 2);
-insert into sale (saleID, time) values (33, '2021-12-26 14:20:47', 3);
-insert into sale (saleID, time) values (34, '2022-06-21 23:55:58', 2);
-insert into sale (saleID, time) values (35, '2022-06-13 18:09:56', 2);
-insert into sale (saleID, time) values (36, '2022-07-18 17:16:53', 2);
-insert into sale (saleID, time) values (37, '2022-01-10 11:50:06', 2);
-insert into sale (saleID, time) values (38, '2022-07-20 02:48:10', 19);
-insert into sale (saleID, time) values (39, '2022-07-13 23:49:53', 2);
-insert into sale (saleID, time) values (40, '2022-04-15 17:17:30', 2);
-insert into sale (saleID, time) values (41, '2021-11-29 22:32:18', 2);
-insert into sale (saleID, time) values (42, '2021-12-16 07:13:31', 2);
-insert into sale (saleID, time) values (43, '2022-04-25 03:44:09', 2);
-insert into sale (saleID, time) values (44, '2022-08-31 03:21:02', 2);
-insert into sale (saleID, time) values (45, '2022-10-15 20:23:17', 2);
-insert into sale (saleID, time) values (46, '2021-12-29 10:40:14', 2);
-insert into sale (saleID, time) values (47, '2022-07-29 13:46:56', 2);
-insert into sale (saleID, time) values (48, '2022-10-13 02:11:05', 2);
-insert into sale (saleID, time) values (49, '2022-03-11 04:44:57', 2);
-insert into sale (saleID, time) values (50, '2022-10-11 09:25:56', 2);
-insert into sale (saleID, time) values (51, '2022-09-16 23:31:20', 2);
-insert into sale (saleID, time) values (52, '2022-03-27 17:20:26', 2);
-insert into sale (saleID, time) values (53, '2022-03-03 16:24:05', 2);
-insert into sale (saleID, time) values (54, '2022-03-13 18:50:12', 2);
-insert into sale (saleID, time) values (55, '2022-03-07 01:31:26', 2);
-insert into sale (saleID, time) values (56, '2022-05-14 03:38:29', 2);
-insert into sale (saleID, time) values (57, '2022-10-11 19:36:44', 2);
-insert into sale (saleID, time) values (58, '2022-01-14 14:52:52', 2);
-insert into sale (saleID, time) values (59, '2022-05-24 20:47:28', 2);
-insert into sale (saleID, time) values (60, '2022-01-20 21:46:00', 10);
-insert into sale (saleID, time) values (61, '2022-05-05 21:24:10', 2);
-insert into sale (saleID, time) values (62, '2022-09-07 11:34:34', 2);
-insert into sale (saleID, time) values (63, '2022-01-10 07:38:17', 2);
-insert into sale (saleID, time) values (64, '2022-05-16 04:21:03', 2);
-insert into sale (saleID, time) values (65, '2022-03-28 01:00:37', 2);
-insert into sale (saleID, time) values (66, '2022-02-05 00:33:42', 2);
-insert into sale (saleID, time) values (67, '2021-12-09 13:39:40', 2);
-insert into sale (saleID, time) values (68, '2022-10-03 03:21:28', 2);
-insert into sale (saleID, time) values (69, '2022-08-07 12:06:13', 2);
-insert into sale (saleID, time) values (70, '2022-10-02 03:25:45', 2);
-insert into sale (saleID, time) values (71, '2022-10-16 13:28:30', 2);
-insert into sale (saleID, time) values (72, '2022-05-12 10:14:48', 2);
-insert into sale (saleID, time) values (73, '2022-10-24 23:03:16', 2);
-insert into sale (saleID, time) values (74, '2022-07-12 00:04:39', 2);
-insert into sale (saleID, time) values (75, '2022-06-27 04:49:02', 2);
-insert into sale (saleID, time) values (76, '2022-04-22 14:31:31', 2);
-insert into sale (saleID, time) values (77, '2022-01-19 06:59:29', 2);
-insert into sale (saleID, time) values (78, '2021-12-15 07:22:51', 2);
-insert into sale (saleID, time) values (79, '2022-06-21 22:11:18', 2);
-insert into sale (saleID, time) values (80, '2022-09-10 02:35:39', 2);
-insert into sale (saleID, time) values (81, '2022-09-10 05:20:09', 2);
-insert into sale (saleID, time) values (82, '2022-03-05 00:35:17', 2);
-insert into sale (saleID, time) values (83, '2022-11-11 11:44:59', 2);
-insert into sale (saleID, time) values (84, '2021-11-25 08:31:30', 2);
-insert into sale (saleID, time) values (85, '2022-02-17 13:59:40', 2);
-insert into sale (saleID, time) values (86, '2022-06-02 06:18:18', 2);
-insert into sale (saleID, time) values (87, '2022-07-23 20:22:34', 2);
-insert into sale (saleID, time) values (88, '2022-03-26 12:24:31', 2);
-insert into sale (saleID, time) values (89, '2022-08-19 15:13:08', 2);
-insert into sale (saleID, time) values (90, '2022-11-05 23:50:48', 2);
-insert into sale (saleID, time) values (91, '2022-06-28 07:35:12', 2);
-insert into sale (saleID, time) values (92, '2022-09-06 07:01:52', 2);
-insert into sale (saleID, time) values (93, '2022-08-30 15:33:56', 2);
-insert into sale (saleID, time) values (94, '2022-02-20 08:43:57', 2);
-insert into sale (saleID, time) values (95, '2022-05-08 23:26:52', 2);
-insert into sale (saleID, time) values (96, '2021-11-26 20:59:04', 2);
-insert into sale (saleID, time) values (97, '2022-07-13 22:20:15', 2);
-insert into sale (saleID, time) values (98, '2022-09-30 01:41:20', 2);
-insert into sale (saleID, time) values (99, '2022-04-30 21:29:42', 2);
-insert into sale (saleID, time) values (100, '2022-01-16 13:43:11', 2);
+insert into sale (customerID) values (1);
+insert into sale (customerID) values (2);
+insert into sale (customerID) values (3);
+insert into sale (customerID) values (4);
+insert into sale (customerID) values (5);
+insert into sale (customerID) values (6);
+insert into sale (customerID) values (7);
+insert into sale (customerID) values (8);
+insert into sale (customerID) values (9);
+insert into sale (customerID) values (10);
+insert into sale (customerID) values (11);
+insert into sale (customerID) values (12);
+insert into sale (customerID) values (13);
+insert into sale (customerID) values (14);
+insert into sale (customerID) values (15);
+insert into sale (customerID) values (16);
+insert into sale (customerID) values (17);
+insert into sale (customerID) values (18);
+insert into sale (customerID) values (19);
+insert into sale (customerID) values (20);
+insert into sale (customerID) values (21);
+insert into sale (customerID) values (22);
+insert into sale (customerID) values (23);
+insert into sale (customerID) values (24);
+insert into sale (customerID) values (25);
+insert into sale (customerID) values (26);
+insert into sale (customerID) values (27);
+insert into sale (customerID) values (28);
+insert into sale (customerID) values (29);
+insert into sale (customerID) values (30);
+insert into sale (customerID) values (31);
+insert into sale (customerID) values (32);
+insert into sale (customerID) values (33);
+insert into sale (customerID) values (34);
+insert into sale (customerID) values (35);
+insert into sale (customerID) values (36);
+insert into sale (customerID) values (37);
+insert into sale (customerID) values (38);
+insert into sale (customerID) values (39);
+insert into sale (customerID) values (40);
+insert into sale (customerID) values (41);
+insert into sale (customerID) values (42);
+insert into sale (customerID) values (43);
+insert into sale (customerID) values (44);
+insert into sale (customerID) values (45);
+insert into sale (customerID) values (46);
+insert into sale (customerID) values (47);
+insert into sale (customerID) values (48);
+insert into sale (customerID) values (49);
+insert into sale (customerID) values (50);
 
 insert into sector (sectorID, name) values (1, 'Healthcare');
 insert into sector (sectorID, name) values (2, 'Materials');

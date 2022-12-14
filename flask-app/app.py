@@ -42,7 +42,7 @@ def get_customer(userID):
     return the_response
 
 #returns all employee details
-@app.route('/customer/<userID>', methods=['GET'])
+@app.route('/employee/<userID>', methods=['GET'])
 def get_employee(userID):
     cursor = db.get_db().cursor()
     cursor.execute('select * from employee where employeeID = {0}'.format(userID))
@@ -68,7 +68,7 @@ def bigSales():
        json_data.append(dict(zip(row_headers, row)))
    return jsonify(json_data)
 
-#returns sales with total value over 1000
+#returns popular sectors
 @app.route('/sector', methods=['GET'])
 def sector():
    cur = db.get_db().cursor()

@@ -1,25 +1,5 @@
-# MySQL + Flask Boilerplate Project
+# Stock Portfolio mock up
 
-This repo contains a boilerplate setup for spinning up 2 docker containers: 
-1. A MySQL 8 container for obvious reasons
-1. A Python Flask container to implement a REST API
+This project is an api that connects to a MySQL service that represents a stock trading and portfolio website. The database consists of customers, who make transactions, the information within these transactions (such as the stock, the price, the quantity, ...) and employees who help the customers. In addition to this functionality, the api supports capabilities to aggregate data to observe market trends and insights (such as popular stocks, sectors, ...).
 
-## How to setup and start the containers
-**Important** - you need Docker Desktop installed
-
-1. Clone this repository.  
-1. Create a file named `db_root_password.txt` in the `secrets/` folder and put inside of it the root password for MySQL. 
-1. Create a file named `db_password.txt` in the `secrets/` folder and put inside of it the password you want to use for the `webapp` user. 
-1. In a terminal or command prompt, navigate to the folder with the `docker-compose.yml` file.  
-1. Build the images with `docker compose build`
-1. Start the containers with `docker compose up`.  To run in detached mode, run `docker compose up -d`. 
-
-## For setting up a Conda Web-Dev environment:
-
-1. `conda create -n webdev python=3.9`
-1. `conda activate webdev`
-1. `pip install flask flask-mysql flask-restful cryptography flask-login`
-
-
-
-
+https://youtu.be/G-x7DC7ozWM

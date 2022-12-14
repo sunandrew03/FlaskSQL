@@ -72,7 +72,7 @@ def bigSales():
 @app.route('/sector', methods=['GET'])
 def sector():
    cur = db.get_db().cursor()
-   cur.execute('select COUNT(sectorID) from stocks, GROUP BY sectorID')
+   cur.execute('select COUNT(sectorID) from stock, GROUP BY sectorID')
    row_headers = [x[0] for x in cur.description]
    json_data = []
    theData = cur.fetchall()
@@ -84,7 +84,7 @@ def sector():
 @app.route('/popular', methods=['GET'])
 def popular():
    cur = db.get_db().cursor()
-   cur.execute('select stockID, COUNT(stockID) from item')
+   cur.execute('select stockID, COUNT(stockID) as count from item GROUP BY stockID ORDER by count DESC')
    row_headers = [x[0] for x in cur.description]
    json_data = []
    theData = cur.fetchall()
